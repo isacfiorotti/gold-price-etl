@@ -1,8 +1,21 @@
 # Lakehouse ELT with Delta, PySpark, and dbt
-Gold Price ETL Pipeline – An end-to-end data engineering project that ingests daily gold prices from Yahoo Finance, cleans and enriches the data, and produces analytics-ready monthly aggregates using Delta Lake and PySpark.
+
+### Gold Price ETL Pipeline
+This is a an end-to-end data engineering project that ingests gold prices from Yahoo Finance, cleans and enriches the data, and produces enriched analytics-ready data using Delta Lake, dbt and PySpark.
+
+I was inspired to do this given the recent price surge on gold, initially driven up by international central banks increasing their supply of gold following a move away from of the dollar, while the dollar remains the world's global currency, this is a clear desire to decrease reliance on the global reserve currency as a store of value.
+
+### Why ELT not ETL?
+Semmantics! ETL is what is is commonly referred to but modern data architectures have moved away from the ETL approach as storage became cheaper, it now makes more sense to store your data first, then transform it while preserving auditability and lineage given rise to Extract Load Transform, albeit it doesn't quite roll of the toungue...
+
+### NOTE: 
+1. For this portfolio project, I have chosen to build the pipeline inside a notebook so I can comment on my design decisions.
+
+2. This project will *not* use an orchestrator due to its scope, typically you would add materialisation checks at each stage and kick off the next step following data validation checks, common choices for this are Airflow, Prefect and Dagster.
 
 ## Get Started
-In your .venv   
+
+1. In your ***.venv*** run the following: 
 ```
 pip install poetry
 ```
@@ -10,7 +23,7 @@ pip install poetry
 poetry install
 ```
 
-## Diagram
+## Architecture Diagram
 ```
 [Raw Data / Bronze Parquet]
           │
